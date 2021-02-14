@@ -1,0 +1,22 @@
+﻿<Window x:Class="CodeSignApp.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeSignApp.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#FF00B3FF">
+        <TextBox x:Name="text_first_num" HorizontalAlignment="Left" Height="23" Margin="314,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="text_second_num" HorizontalAlignment="Left" Height="23" Margin="314,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button_add" Content="Add" HorizontalAlignment="Left" Margin="108,222,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="button_add_Click"/>
+        <Button x:Name="button_sub" Content="Substract" HorizontalAlignment="Left" Margin="266,222,0,0" VerticalAlignment="Top" Width="75" Click="button_sub_Click"/>
+        <Button x:Name="button_mul" Content="Multiply" HorizontalAlignment="Left" Margin="434,222,0,0" VerticalAlignment="Top" Width="75" Click="button_mul_Click"/>
+        <Button x:Name="button_divd" Content="Divide" HorizontalAlignment="Left" Margin="606,222,0,0" VerticalAlignment="Top" Width="75" Click="button_divd_Click"/>
+        <TextBox x:Name="text_answ" HorizontalAlignment="Left" Height="23" Margin="314,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lbl_first_num" Content="Enter First Number" HorizontalAlignment="Left" Margin="146,92,0,0" VerticalAlignment="Top" Height="23" Width="122"/>
+        <Label x:Name="lbl_second_num" Content="Enter Second Number" HorizontalAlignment="Left" Margin="146,146,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_ans" Content="Answer" HorizontalAlignment="Left" Margin="239,289,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.326,0.441"/>
+
+    </Grid>
+</Window>
