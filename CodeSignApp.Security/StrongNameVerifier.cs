@@ -88,7 +88,11 @@ namespace CodeSignApp.Security
 
             var publickey = certificate.GetRSAPublicKey();
 
-            return publickey.VerifyData(Encoding.ASCII.GetBytes(assembly.ToString()), Convert.FromBase64String(X509Certificate.CreateFromSignedFile(assembly.FullName)), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+            Assembly assembly1 = Assembly.LoadFrom(assembly.FullName);
+
+            var signature = assembly1.ManifestModule.ResolveSignature(1);
+
+            return publickey.VerifyData();
         }
 
         private static X509Certificate2 FetchCertificate()
