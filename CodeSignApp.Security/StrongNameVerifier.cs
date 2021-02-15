@@ -88,11 +88,16 @@ namespace CodeSignApp.Security
 
             var publickey = certificate.GetRSAPublicKey();
 
-            Assembly assembly1 = Assembly.LoadFrom(assembly.FullName);
+            X509Certificate codeSignedCert = X509Certificate.CreateFromSignedFile(assembly.FullName);
 
-            var signature = assembly1.ManifestModule.ResolveSignature(1);
+            var publickey2 = codeSignedCert.GetPublicKey();
 
-            return publickey.VerifyData();
+            if(publickey == publickey2)
+            {
+                return true;
+            }
+
+            return false;            
         }
 
         private static X509Certificate2 FetchCertificate()
