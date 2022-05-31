@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>SgnKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CodeSignApp.MathLib\CodeSignApp.MathLib.csproj" />
+    <ProjectReference Include="..\CodeSignApp.Security\CodeSignApp.Security.csproj" />
+  </ItemGroup>
+
+</Project>

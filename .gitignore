@@ -11,6 +11,9 @@ CodeSignApp.Lib/
 *.user
 *.userosscache
 *.sln.docstates
+*.snk
+*.pfx
+*.cer
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -178,7 +181,7 @@ DocProject/Help/Html2
 DocProject/Help/html
 
 # Click-Once directory
-publish/
+[Pp]ublish/
 
 # Publish Web Output
 *.[Pp]ublish.xml

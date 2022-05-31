@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CodeSignApp.MathLib;
+using CodeSignApp.Security;
 
 namespace CodeSignApp.UI
 {
@@ -21,9 +23,23 @@ namespace CodeSignApp.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IMathService _mathHandler;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            if (!CodeSecurity.VerifiyAssemblies())
+            {
+                if (MessageBox.Show("Security exception occured! Cannot initiate the app.", "Confirmation", MessageBoxButton.OK) == MessageBoxResult.OK)
+                {
+                    Application.Current.Shutdown();
+                }
+            }
+            else
+            {
+                _mathHandler = RequestFactory.GetMathServiceHandler();
+            }
         }
 
         private void button_add_Click(object sender, RoutedEventArgs e)
@@ -31,9 +47,7 @@ namespace CodeSignApp.UI
             int firstNum = Convert.ToInt32(text_first_num.Text);
             int secNum = Convert.ToInt32(text_second_num.Text);
 
-            IMathService mathHandler = RequestFactory.GetMathServiceHandler();
-
-            int ans = mathHandler.Add(firstNum, secNum);
+            int ans = _mathHandler.Add(firstNum, secNum);
 
             text_answ.Text = Convert.ToString(ans);
         }
@@ -43,9 +57,7 @@ namespace CodeSignApp.UI
             int firstNum = Convert.ToInt32(text_first_num.Text);
             int secNum = Convert.ToInt32(text_second_num.Text);
 
-            IMathService mathHandler = RequestFactory.GetMathServiceHandler();
-
-            int ans = mathHandler.Substract(firstNum, secNum);
+            int ans = _mathHandler.Substract(firstNum, secNum);
 
             text_answ.Text = Convert.ToString(ans);
 
@@ -56,9 +68,7 @@ namespace CodeSignApp.UI
             int firstNum = Convert.ToInt32(text_first_num.Text);
             int secNum = Convert.ToInt32(text_second_num.Text);
 
-            IMathService mathHandler = RequestFactory.GetMathServiceHandler();
-
-            float ans = mathHandler.Multiply(firstNum, secNum);
+            float ans = _mathHandler.Multiply(firstNum, secNum);
 
             text_answ.Text = Convert.ToString(ans);
         }
@@ -68,9 +78,7 @@ namespace CodeSignApp.UI
             int firstNum = Convert.ToInt32(text_first_num.Text);
             int secNum = Convert.ToInt32(text_second_num.Text);
 
-            IMathService mathHandler = RequestFactory.GetMathServiceHandler();
-
-            double ans = mathHandler.Divide(firstNum, secNum);
+            double ans = _mathHandler.Divide(firstNum, secNum);
 
             //var ans_str = DoFormat(ans);
 
